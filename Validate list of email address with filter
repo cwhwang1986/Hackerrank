@@ -1,0 +1,25 @@
+import re
+import sys
+
+def address_validation(email_string):
+	'''Return valid email address'''
+	address_list = email_string.read().split()[1:]
+	valid_address = []
+	for address in address_list:
+		if check_username(address) and check_website(address) and check_extension(address):
+			valid_address.append(address)
+	return sorted(valid_address)
+		
+def check_username(address):
+	if address.count("@")==1 and re.search("[^a-zA-Z0-9_-]",address[:address.find("@")])==None:
+		return True
+		
+def check_website(address):
+	if address.count(".")==1 and re.search("[^a-zA-Z0-9]",address[address.find("@")+1:address.find(".")])==None:
+		return True
+		
+def check_extension(address):
+	if address[-4] == ".":
+		return True
+if __name__ == "__main__":
+   print address_validation(sys.stdin) 
