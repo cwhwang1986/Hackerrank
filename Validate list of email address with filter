@@ -19,7 +19,8 @@ def check_website(address):
 		return True
 		
 def check_extension(address):
-	if address[-4] == ".":
+	if len(address[address.find(".")+1:])<=3 and re.search("[^a-zA-Z0-9]",address[address.find(".")+1:])==None:
 		return True
+    
 if __name__ == "__main__":
    print address_validation(sys.stdin) 
