@@ -6,7 +6,7 @@ def address_validation(email_string):
 	address_list = email_string.read().split()[1:]
 	valid_address = []
 	for address in address_list:
-		if check_username(address) and check_website(address) and check_extension(address):
+		if check_username(address) and check_website(address) and check_extension(address) and address.find("@") > 1:
 			valid_address.append(address)
 	return sorted(valid_address)
 		
